@@ -88,6 +88,7 @@ export const register = async (req, res) => {
     // ✅ Step 10: Send success response to frontend
     return res.json({
       success: true,
+      message: "Registration successful. Welcome email sent.",
     });
   } catch (err) {
     // ❌ Step 11: Handle and return server error

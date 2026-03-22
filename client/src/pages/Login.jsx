@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets';
 import '../Login.css'; // We'll add autofill fix here
+import './Login1.css'; // Additional styles for the login page
 import { useNavigate } from 'react-router-dom';
 import { AppContent } from '../context/AppContext';
 import { toast } from 'react-toastify'
@@ -33,6 +34,7 @@ const Login = () => {
           setIsLoggedIn(true)
           await getUserData()
           navigate('/')
+          toast.success(data.message)
         }
         else
         {
@@ -115,9 +117,33 @@ const Login = () => {
 
           <p onClick={() => navigate('/reset-password')} className='mb-4 text-indigo-500 cursor-pointer'>Forget Password ?</p>
 
-          <button type='submit' className='w-full py-2.5 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-900 text-white font-medium'>
+
+{/* Normal button */}
+          {/* <button type='submit' className='w-full py-2.5 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-900 text-white font-medium'>
             {state}
-          </button>
+          </button> */}
+
+          <button
+  type="submit"
+  className="
+    w-full py-2.5 rounded-full
+    bg-gradient-to-br from-indigo-500 to-indigo-900
+    text-white font-medium
+    transition-all duration-300 ease-out
+    hover:scale-[1.03]
+    hover:from-indigo-600 hover:to-indigo-950
+    hover:shadow-[0_10px_25px_rgba(79,70,229,0.4)]
+    active:scale-[0.97]
+    focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2
+    relative overflow-hidden
+  "
+>
+  {/* shimmer effect */}
+  <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
+
+  <span className="relative z-10">{state}</span>
+</button> 
+
         </form>
 
         {state === 'Sign Up' ? (
